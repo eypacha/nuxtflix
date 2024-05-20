@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["vuetify-nuxt-module"],
+  modules: ["vuetify-nuxt-module", "@nuxt/eslint"],
   vuetify: {
     moduleOptions: {
       // styles: {
@@ -10,16 +10,16 @@ export default defineNuxtConfig({
     },
     vuetifyOptions: {
       theme: {
-        defaultTheme: 'dark',
+        defaultTheme: "dark",
         themes: {
           dark: {
             colors: {
-              primary: '#00dc82',
-              background: '#020420',
-            }
-          }
-        }
-      }
-    }
+              primary: "#00dc82",
+              background: "#020420",
+            },
+          },
+        },
+      },
+    },
   },
-})
+});
