@@ -8,9 +8,9 @@
           class="mx-4"
           variant="text"
           :aria-label="icon.label"
-        ></v-btn>
+        />
       </div>
-      <v-divider></v-divider>
+      <v-divider />
       <div>
         2024 — <strong>Nuxtflix</strong>
       </div>

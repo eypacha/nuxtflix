@@ -10,12 +10,12 @@
             label="Email"
             variant="outlined"
             required
-          ></v-text-field>
+          />
           <v-text-field
             label="Contraseña"
             variant="outlined"
             required
-          ></v-text-field>
+          />
           <v-btn block color="primary"  @click="$router.push('/browse')">
             Iniciar sesión
           </v-btn>
