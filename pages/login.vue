@@ -22,7 +22,7 @@
         </v-form>
       </v-card-text>
       <v-card-actions class="d-flex justify-between">
-        <v-btn text>¿Olvidaste la contraseña?</v-btn>
+        <v-btn>¿Olvidaste la contraseña?</v-btn>
       </v-card-actions>
     </v-card>
   </HeroPosters>
