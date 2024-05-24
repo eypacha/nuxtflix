@@ -1,5 +1,5 @@
 <template>
-  <HeroPosters>
+  <ParallaxSection height="100dvh">
     <v-card class="pa-8" max-width="400" variant="elevated">
       <v-card-title>
         Inicia sesión
@@ -25,5 +25,5 @@
         <v-btn>¿Olvidaste la contraseña?</v-btn>
       </v-card-actions>
     </v-card>
-  </HeroPosters>
+  </ParallaxSection>
 </template>
