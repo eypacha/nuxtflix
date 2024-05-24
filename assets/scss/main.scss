@@ -1,0 +1,10 @@
+.movie-slider {
+
+    &:not(:hover) {
+        .v-slide-group__prev,
+        .v-slide-group__next {
+            opacity: 0;
+        }
+    }
+
+} 
