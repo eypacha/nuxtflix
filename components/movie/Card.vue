@@ -26,8 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
 interface Movie {
   title: string;
   imdbID: string;
