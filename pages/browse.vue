@@ -19,7 +19,7 @@ const movies = [
     },
     {
         searchTerm: 'lego',
-        title: 'Made with brik'
+        title: 'Made with bricks'
     },
     {
         searchTerm: 'star wars',
@@ -27,7 +27,7 @@ const movies = [
     },
     {
         searchTerm: 'pink panther',
-        title: 'Pink'
+        title: 'Pink!'
     },
 ]
 </script>
