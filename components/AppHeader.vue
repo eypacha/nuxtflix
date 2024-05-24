@@ -6,14 +6,28 @@
             </router-link>
         </v-toolbar-title>
         <v-spacer />
-        <v-btn v-if="isIndexPage" color="primary" variant="flat" to="/login">Iniciar Sesión</v-btn>
+        <v-menu location="start">
+          <template v-slot:activator="{ props }">
+            <v-btn icon="mdi-translate" v-bind="props" class="mr-2" />
+          </template>
+          <v-list class="mr-2" density="compact">
+            <v-list-item @click="setLocale('en')" :active="locale === 'en'">
+              <v-list-item-title>English</v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="setLocale('es')" :active="locale === 'es'">
+              <v-list-item-title>Español</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+        <v-btn v-if="isIndexPage" color="primary" variant="flat" to="/login">{{ $t('user.login_button') }}</v-btn>
     </v-app-bar>
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'nuxt/app'
+import { useRoute } from 'nuxt/app';
+const { locale, setLocale } = useI18n();
 
-const route = useRoute()
+const route = useRoute();
 
 const isIndexPage = computed((): boolean => route.path === '/');
 
@@ -34,6 +48,11 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', changeColor);
 });
+
+const changeLanguage = (language: string): void => {
+  const { i18n } = useNuxtApp()
+  i18n.locale = language
+}
 </script>
 
 <style scoped>

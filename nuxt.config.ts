@@ -2,12 +2,16 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['@/assets/scss/main.scss'],
-  modules: ["vuetify-nuxt-module", "@nuxt/eslint"],
   runtimeConfig: {
     public: {
       omdbApiKey: process.env.OMDB_API_KEY
     }
   },
+  modules: [
+    "vuetify-nuxt-module",
+    "@nuxt/eslint",
+    "@nuxtjs/i18n"
+  ],
   vuetify: {
     moduleOptions: {
       // styles: {
@@ -28,4 +32,7 @@ export default defineNuxtConfig({
       },
     },
   },
+  i18n: {
+    vueI18n: './i18n.config.ts' // if you are using custom path, default
+  }
 });
