@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute } from 'nuxt/app'
 
 const route = useRoute()
