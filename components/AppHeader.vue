@@ -22,7 +22,7 @@ const bg = ref<string>('transparent');
 
 const changeColor = ():void => {
   if (window.scrollY > 100) {
-    bg.value = '#020420';
+    bg.value = 'rgb(var(--v-theme-background))';
   } else {
     bg.value = 'transparent';
   }
