@@ -9,11 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const nuxtApp = useNuxtApp();
-const config = useRuntimeConfig();
-
 interface MovieSearchResult {
   title: string;
   imdbID: string;
