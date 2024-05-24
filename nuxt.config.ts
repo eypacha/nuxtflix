@@ -3,6 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['@/assets/scss/main.scss'],
   modules: ["vuetify-nuxt-module", "@nuxt/eslint"],
+  runtimeConfig: {
+    public: {
+      omdbApiKey: process.env.OMDB_API_KEY
+    }
+  },
   vuetify: {
     moduleOptions: {
       // styles: {
