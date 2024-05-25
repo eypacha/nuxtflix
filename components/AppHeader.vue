@@ -7,14 +7,14 @@
         </v-toolbar-title>
         <v-spacer />
         <v-menu location="start">
-          <template v-slot:activator="{ props }">
+          <template #activator="{ props }">
             <v-btn icon="mdi-translate" v-bind="props" class="mr-2" />
           </template>
           <v-list class="mr-2" density="compact">
-            <v-list-item @click="setLocale('en')" :active="locale === 'en'">
+            <v-list-item :active="locale === 'en'" @click="setLocale('en')" >
               <v-list-item-title>English</v-list-item-title>
             </v-list-item>
-            <v-list-item @click="setLocale('es')" :active="locale === 'es'">
+            <v-list-item :active="locale === 'es'" @click="setLocale('es')">
               <v-list-item-title>Español</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -48,11 +48,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', changeColor);
 });
-
-const changeLanguage = (language: string): void => {
-  const { i18n } = useNuxtApp()
-  i18n.locale = language
-}
 </script>
 
 <style scoped>
