@@ -18,7 +18,7 @@ export default defineI18nConfig(() => ({
       es: {
         index: {
             title: 'Películas ilimitadas y mucho más',
-            subtitle: '¡Descubre un mundo de entretenimiento sin límites'
+            subtitle: '¡Descubre un mundo de entretenimiento sin límites!'
         },
         user: {
             signin: 'Inicia sesión',
