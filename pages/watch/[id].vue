@@ -10,9 +10,19 @@
             </v-col>
             <v-col cols="8">
                 <h3 class="text-h3">{{ movie.title }}</h3>
-                <div class="mb-4 text-primary">
-                    {{ movie.runtime }} {{ movie.genre }}
+                <div class="text-primary">
+                    {{ movie.runtime }} {{ movie.genre }} 
                 </div>
+                <v-rating
+                    v-if="movie.imdbRating"
+                    :model-value="movie.imdbRating"
+                    half-increments
+                    readonly
+                    length="10"
+                    size="24"
+                    color="grey-lighten-1"
+                    active-color="yellow-darken-2"
+                    /> 
                 <p> {{ movie.plot }}</p>
             </v-col>
         </v-row>
@@ -45,6 +55,8 @@ interface MovieData {
     Runtime?: string;
     Genre?: string;
     Plot?: string;
+    imdbRating?: string;
+    Awards?: string;
     Poster?: string;
 };
 
@@ -54,12 +66,19 @@ interface Movie {
     runtime?: string;
     genre?: string;
     plot?: string;
+    imdbRating?: number;
+    Awards?: string;
     poster?: string;
 };
 
 function sanitizeData(value: string): string | undefined {
     return value === 'N/A' ? undefined : value;
-}
+};
+
+function sanitizeRating(value: string): number | undefined {
+    if (value === 'N/A') return undefined;
+    return Math.round(parseFloat(value) * 2) / 2; 
+};
 
 const { pending, data: movie } = await useFetch('https://omdbapi.com', {
     query: {
@@ -67,7 +86,7 @@ const { pending, data: movie } = await useFetch('https://omdbapi.com', {
         i: route.params.id,
     },
     lazy: false,
-    pick: ['response', 'title', 'runtime', 'genre', 'plot', 'poster'],
+    pick: ['response', 'title', 'runtime', 'genre', 'plot', 'poster','imdbRating'],
     getCachedData: (key): Movie => {
         return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
     },
@@ -75,10 +94,12 @@ const { pending, data: movie } = await useFetch('https://omdbapi.com', {
 
         if(data.Response === 'False') return undefined
         
+        console.log("data",data)
         return {
             response: data.Response === 'True',
             title: data.Title,
             runtime: sanitizeData(data.Runtime),
+            imdbRating: sanitizeRating(data.imdbRating),
             genre: sanitizeData(data.Genre),
             plot: sanitizeData(data.Plot),
             poster: sanitizeData(data.Poster)
