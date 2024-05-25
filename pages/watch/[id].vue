@@ -77,6 +77,7 @@ function sanitizeData(value: string): string | undefined {
 
 function sanitizeRating(value: string): number | undefined {
     if (value === 'N/A') return undefined;
+    // To round to the nearest 0.5
     return Math.round(parseFloat(value) * 2) / 2; 
 };
 
