@@ -13,6 +13,7 @@
             class="align-end"
             height="200px"
             width="130px"
+            :alt="props.movie.title"
             cover
             >
                 <v-expand-transition>
