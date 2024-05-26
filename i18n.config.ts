@@ -13,6 +13,9 @@ export default defineI18nConfig(() => ({
             password: 'Password',
             login_button: 'Sign In',
             forgot_password: 'Forgot your password?'
+        },
+        error: {
+            goto_gome: 'Go to home'
         }
       },
       es: {
@@ -26,7 +29,10 @@ export default defineI18nConfig(() => ({
             password: 'Contraseña',
             login_button: 'Iniciar sesión',
             forgot_password: '¿Olvidaste la contraseña?'
-        }
+        },
+        error: {
+          goto_gome: 'Ir al inicio'
+      }
       },
     }
   }))
