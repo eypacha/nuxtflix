@@ -10,7 +10,8 @@ export default defineNuxtConfig({
   modules: [
     "vuetify-nuxt-module",
     "@nuxt/eslint",
-    "@nuxtjs/i18n"
+    "@nuxtjs/i18n",
+    "@nuxt/test-utils/module",
   ],
   vuetify: {
     moduleOptions: {
