@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <canvas ref="canvas"></canvas>
+    <canvas ref="canvas"/>
     <div class="d-flex flex-column justify-center align-center text-white">
-      <h1 class="text-h1 font-weight-black mb-2">{{ error.statusCode }}</h1>
-      <h2 class="text-h5 mb-10">{{ error.message }}</h2>
-      <v-btn @click="goToHome" color="primary">{{ $t('error.goto_gome')}}</v-btn>
+      <h1 class="text-h1 font-weight-black mb-2">{{ props.error.statusCode }}</h1>
+      <h2 class="text-h5 mb-10">{{ props.error.message }}</h2>
+      <v-btn color="primary" @click="goToHome">{{ $t('error.goto_gome')}}</v-btn>
     </div>
   </div>
 </template>
