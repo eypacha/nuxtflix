@@ -1,11 +1,31 @@
 <template>
-    <ParallaxSection class="mb-10" height="calc(100dvh - 300px)" />
-    <MovieSection v-for="(movie, index) in movies" :key="index" :search-term="movie.searchTerm" :title="movie.title"/>
+    <FeaturedCarousel :movies="featured"/>
+
+        <MovieSection
+            v-for="(section, index) in sections"
+            :key="index"
+            :search-term="section.searchTerm"
+            :title="section.title"/>
 </template>
 
 <script setup lang="ts">
 
-const movies = [
+const featured = [
+    {
+        imdbId: 'tt1160419',
+        poster: '/img/featured/dune_background.jpg'
+    },
+    {
+        imdbId: 'tt15398776',
+        poster: '/img/featured/oppenheimer_background.jpg'
+    },
+    {
+        imdbId: 'tt0816692',
+        poster: '/img/featured/interstellar_background.jpg'
+    },
+]
+
+const sections = [
     {
         searchTerm: 'avengers',
         title: 'The Avengers'
