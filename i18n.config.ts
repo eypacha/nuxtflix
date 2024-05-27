@@ -18,6 +18,10 @@ export default defineI18nConfig(() => ({
         more_info: "More info"
       },
       watch: {
+        director: "Director:",
+        writer: "Writer:",
+        cast: "Cast:",
+        awards: "Awards:",
         no_movie: "Oops! We couldn't find the movie",
         find_other_titles: "But there are many others at",
         home: "home",
@@ -43,6 +47,10 @@ export default defineI18nConfig(() => ({
         more_info: "Más info"
       },
       watch: {
+        director: "Director:",
+        writer: "Escritor:",
+        cast: "Elenco:",
+        awards: "Premios:",
         no_movie: "¡Uy! No encontramos esa película",
         find_other_titles: "Pero hay muchos otro en el",
         home: "inicio",
