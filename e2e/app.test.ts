@@ -41,6 +41,11 @@ describe('Router', async () => {
         }
     })
 
+    test('Custom error message when accessing /watch with a valid but nonexistent IMDb ID', async () => {
+        const html = await $fetch('/watch/tt4154755')
+        expect(html).toContain('Oops!')
+    })
+
     test('404 Error when when accessing /watch with an invalid IMDb ID', async () => {
         try {
             await $fetch('/watch/123')
@@ -59,4 +64,4 @@ describe('Router', async () => {
         }
     })
 
-})
+})  
