@@ -2,6 +2,14 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['@/assets/scss/main.scss'],
+  app: {
+    head: {
+      title: 'Nuxtflix',
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' }
+      ],
+    }
+  },
   runtimeConfig: {
     public: {
       omdbApiKey: process.env.OMDB_API_KEY
