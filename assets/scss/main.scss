@@ -4,6 +4,15 @@ html {
 
 .movie-slider {
 
+    .v-icon {
+        --v-icon-size-multiplier: 1.5;
+    }
+
+    .v-slide-group__prev--disabled,
+    .v-slide-group__next--disabled{
+        opacity: 0;
+    }
+
     &:not(:hover) {
         .v-slide-group__prev,
         .v-slide-group__next {
