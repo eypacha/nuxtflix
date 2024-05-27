@@ -7,9 +7,9 @@
         :show-arrows="false">
         <FeaturedItem
             v-for="movie in props.movies"
-            :imdbId="movie.imdbId"
-            :poster="movie.poster"
-            :key="movie.imdbId"/>
+            :key="movie.imdbId"
+            :imdb-id="movie.imdbId"
+            :poster="movie.poster"/>
     </v-carousel>
 </template>
 
