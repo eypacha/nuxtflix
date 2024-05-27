@@ -48,7 +48,7 @@ function sanitizeString(value: string): string | undefined {
     return value === 'N/A' ? undefined : value;
 };
 
-const { pending, data: movie } = await useFetch('https://omdbapi.com', {
+const { data: movie } = await useFetch('https://omdbapi.com', {
     query: {
         apikey: config.public.omdbApiKey,
         i: props.imdbId
