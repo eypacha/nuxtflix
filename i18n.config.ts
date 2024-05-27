@@ -14,10 +14,14 @@ export default defineI18nConfig(() => ({
         login_button: "Sign In",
         forgot_password: "Forgot your password?",
       },
+      browse: {
+        more_info: "More info"
+      },
       watch: {
         no_movie: "Oops! We couldn't find the movie",
         find_other_titles: "But there are many others at",
         home: "home",
+        go_back: "Go back to browse"
       },
       error: {
         goto_gome: "Go to home",
@@ -35,10 +39,14 @@ export default defineI18nConfig(() => ({
         login_button: "Iniciar sesión",
         forgot_password: "¿Olvidaste la contraseña?",
       },
+      browse: {
+        more_info: "Más info"
+      },
       watch: {
         no_movie: "¡Uy! No encontramos esa película",
         find_other_titles: "Pero hay muchos otro en el",
         home: "inicio",
+        go_back: "Volver a explorar"
       },
       error: {
         goto_gome: "Ir al inicio",
