@@ -1,3 +1,15 @@
+$primary: #00dc82;
+
+::-moz-selection { 
+    color: white;
+    background: $primary;
+}
+
+::selection {
+    color: white;
+    background: $primary;
+}
+
 html {
     overflow-y: auto;
 }
