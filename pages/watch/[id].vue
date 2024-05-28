@@ -1,13 +1,13 @@
 <template>
-    <v-container class="hero" fluid>
+    <v-container class="watch_route hero" fluid>
         <div class="fill-height d-flex align-center justify-center">
 
         <v-row v-if="movie && movie.response" justify="center" class="mt-15 mb-10 mt-sm-0 mt-sm-0">
             <v-col cols="12" sm="5" order-sm="2">
                 <v-card outlined color="background" class="fill-height d-flex flex-column pa-7" rounded="lg">
                     <v-card-title class="text-h4">{{ movie.title }}</v-card-title>
-                    <v-card-subtitle v-if="movie.rated || movie.runtime || movie.genre" class="mb-4">
-                        <div class="text-primary mb-2 gap-dots">
+                    <v-card-subtitle class="mb-4">
+                        <div v-if="isGreenInfo" class="text-primary mb-2 gap-dots">
                             <span v-if="movie.rated">{{ movie.rated }}</span>
                             <span v-if="movie.runtime">{{ movie.runtime }}</span>
                             <span v-if="movie.genre">{{ movie.genre }}</span>
@@ -105,7 +105,6 @@ interface Movie {
     actors?: string;
     plot?: string;
     imdbRating?: number;
-    imdbStars?: number;
     awards?: string;
     poster?: string;
 };
@@ -118,23 +117,19 @@ function sanitizeNumber(value: string): number | undefined {
     return value === 'N/A' ? undefined : parseFloat(value);
 };
 
-const { pending, data: movie } = await useFetch('https://omdbapi.com', {
+const { data: movie } = await useFetch('https://omdbapi.com', {
     query: {
         apikey: config.public.omdbApiKey,
         i: route.params.id
     },
     lazy: false,
-    pick: ['response', 'title', 'runtime', 'rated', 'genre', 'director', 'writer', 'actors', 'plot', 'poster', 'awards', 'imdbRating', 'imdbStars'],
+    pick: ['response', 'title', 'runtime', 'rated', 'genre', 'director', 'writer', 'actors', 'plot', 'poster', 'awards', 'imdbRating'],
     getCachedData: (key): Movie => {
         return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
     },
     transform: (data: MovieData): Movie => {
 
         if(data.Response === 'False') return undefined
-
-        const imdbRating = sanitizeNumber(data.imdbRating);
-
-        const imdbStars = imdbRating !== undefined ? Math.round(imdbRating) / 2 : undefined;
 
         return {
             response: data.Response === 'True',
@@ -148,12 +143,15 @@ const { pending, data: movie } = await useFetch('https://omdbapi.com', {
             plot: sanitizeString(data.Plot),
             poster: sanitizeString(data.Poster),
             awards: sanitizeString(data.Awards),
-            imdbRating,
-            imdbStars,
+            imdbRating: sanitizeNumber(data.imdbRating)
         };
     },
+
 });
 
+const isGreenInfo = computed(() => {
+  return movie.value?.rated || movie.value?.runtime || movie.value?.genre;
+});
 </script>
 
 <style scoped lang="scss">
