@@ -8,8 +8,9 @@ describe('App', () => {
     it('renders correct text content from i18n configuration', async () => {
         const component = await mountSuspended(Index)
         
-        // @ts-ignore
-        const messages = i18nConfig().messages.en.index
+        const config = i18nConfig() as { messages: { en: { index: any } } };
+        const messages = config.messages.en.index;
+        
         const titleText = messages.title
         const subtitleText = messages.subtitle
 
