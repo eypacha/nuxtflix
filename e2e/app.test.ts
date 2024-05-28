@@ -1,5 +1,9 @@
 import { setup, createPage, url } from '@nuxt/test-utils/e2e'
 import { test, expect, describe } from 'vitest'
+import i18nConfig from '../i18n.config'
+
+const config = i18nConfig() as { messages: { en: any } };
+const messages = config.messages.en;
 
 describe('Router', async () => {
 
@@ -55,7 +59,7 @@ describe('Router', async () => {
         const page = await createPage()
         await page.goto(url('/watch/tt4154755'), { waitUntil: 'hydration' })
         const text = await page.textContent('h3')
-        expect(text).toContain('Oops!')
+        expect(text).toContain(messages.watch.no_movie)
 
     })
 
