@@ -8,7 +8,7 @@
         <v-spacer />
         <v-menu location="start">
           <template #activator="{ props }">
-            <v-btn icon="mdi-translate" v-bind="props" class="mr-2" />
+            <v-btn icon="mdi-translate" v-bind="props" :aria-label="$t('user.translate')" class="mr-2" />
           </template>
           <v-list class="mr-2" density="compact">
             <v-list-item :active="locale === 'en'" @click="setLocale('en')" >

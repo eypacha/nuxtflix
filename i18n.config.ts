@@ -13,6 +13,7 @@ export default defineI18nConfig(() => ({
         password: "Password",
         login_button: "Sign In",
         forgot_password: "Forgot your password?",
+        translate: "Translate"
       },
       browse: {
         more_info: "More info"
@@ -43,6 +44,7 @@ export default defineI18nConfig(() => ({
         password: "Contraseña",
         login_button: "Iniciar sesión",
         forgot_password: "¿Olvidaste la contraseña?",
+        translate: "Traducir"
       },
       browse: {
         more_info: "Más info"
