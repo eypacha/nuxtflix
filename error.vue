@@ -13,7 +13,14 @@
 import type { NuxtError } from '#app'
 
 const props = defineProps({
-  error: Object as () => NuxtError
+  error: {
+    type: Object as () => NuxtError,
+    required: true,
+    default: () => ({
+      statusCode: 500,
+      message: 'An unknown error occurred'
+    })
+  }
 })
 
 const goToHome = () => clearError({ redirect: '/' })
