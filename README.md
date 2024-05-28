@@ -2,6 +2,8 @@
 
  A movie app for videoclub users to log in and access a selection of films and their attributes.
 
+![Texto alternativo](public/img/screenshoot.png)
+
 ## Setup
 
 Make sure to install the dependencies:
