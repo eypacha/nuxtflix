@@ -1,5 +1,5 @@
 <template>
-    <v-sheet class="mx-auto mt-2 mb-9" elevation="0" color="transparent" max-width="100%">
+    <v-sheet class="mx-auto mt-2 mb-9" elevation="0" color="transparent" width="fit-content" max-width="100%">
         <h3 class="ml-16">{{ props.title }}</h3>
         <MovieSlider :movies="searchResults"/>
     </v-sheet>
