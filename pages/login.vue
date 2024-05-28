@@ -1,5 +1,5 @@
 <template>
-  <ParallaxSection height="100dvh">
+  <ParallaxSection height="100dvh" class="login_route">
     <v-card class="pa-8" max-width="400" variant="elevated">
       <v-card-title>
         {{ $t('user.signin') }}
