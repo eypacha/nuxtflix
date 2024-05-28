@@ -1,11 +1,15 @@
 <template>
-    <FeaturedCarousel :movies="featured"/>
+    <div class="browse_route">
+        <FeaturedCarousel :movies="featured"/>
 
-        <MovieSection
-            v-for="(section, index) in sections"
-            :key="index"
-            :search-term="section.searchTerm"
-            :title="section.title"/>
+        <section class="movies_sections">
+            <MovieSection
+                v-for="(section, index) in sections"
+                :key="index"
+                :search-term="section.searchTerm"
+                :title="section.title"/>
+        </section>
+    </div>
 </template>
 
 <script setup lang="ts">
