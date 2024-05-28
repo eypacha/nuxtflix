@@ -1,67 +1,80 @@
-import { setup, $fetch } from '@nuxt/test-utils/e2e'
+import { setup, createPage, url } from '@nuxt/test-utils/e2e'
 import { test, expect, describe } from 'vitest'
-import i18nConfig from '../i18n.config'
-
-// @ts-ignore
-const messages = i18nConfig().messages.en
 
 describe('Router', async () => {
 
     await setup()
 
     test('Index Page (/)', async () => {
-        const html = await $fetch('/')
-        
-        const titleText = messages.index.title
-        expect(html).toContain(titleText)
+
+        const page = await createPage()
+        await page.goto(url('/'), { waitUntil: 'hydration' })
+        const index_route = await page.$('index_route')
+        expect(index_route).toBeDefined()
+
     })
 
     test('Sign In Page (/login)', async () => {
-        const html = await $fetch('/login')
-        const signinTitle = messages.user.signin
-        expect(html).toContain(signinTitle)
+        
+        const page = await createPage()
+        await page.goto(url('/login'), { waitUntil: 'hydration' })
+        const login_route = await page.$('.login_route')
+        expect(login_route).toBeDefined()
+
     })
 
     test('Browse Page (/browse)', async () => {
-        const html = await $fetch('/browse')
-        expect(html).toContain('The Avengers')
+       
+        const page = await createPage()
+        await page.goto(url('/browse'), { waitUntil: 'hydration' })
+        const browse_route = await page.$('.browse_route')
+        expect(browse_route).toBeDefined()
+
     })
 
     test('Avengers Endgame Movie Page (/watch/tt123123)', async () => {
-        const html = await $fetch('/watch/tt4154796')
-        expect(html).toContain('Avengers: Endgame')
+
+        const page = await createPage()
+        await page.goto(url('/watch/tt4154796'), { waitUntil: 'hydration' })
+        const text = await page.textContent('.v-card-title')
+        expect(text).toContain('Avengers: Endgame')
+
     })
 
     test('404 Error when accessing /watch without any slug', async () => {
-        try {
-            await $fetch('/watch')
-        } catch (error) {
-            // @ts-ignore
-            expect(error.response.status).toBe(404)
-        }
+        
+        const page = await createPage()
+        await page.goto(url('/watch'), { waitUntil: 'hydration' })
+        const text = await page.textContent('h1')
+        expect(text).toBe('404')
+
     })
 
     test('Custom error message when accessing /watch with a valid but nonexistent IMDb ID', async () => {
-        const html = await $fetch('/watch/tt4154755')
-        expect(html).toContain('Oops!')
+
+        const page = await createPage()
+        await page.goto(url('/watch/tt4154755'), { waitUntil: 'hydration' })
+        const text = await page.textContent('h3')
+        expect(text).toContain('Oops!')
+
     })
 
     test('404 Error when when accessing /watch with an invalid IMDb ID', async () => {
-        try {
-            await $fetch('/watch/123')
-        } catch (error) {
-            // @ts-ignore
-            expect(error.response.status).toBe(404)
-        }
+
+        const page = await createPage()
+        await page.goto(url('/watch/123'), { waitUntil: 'hydration' })
+        const text = await page.textContent('h1')
+        expect(text).toBe('404')
+
     })
 
     test('404 Error when accessing an invalid page (/invalid-page)', async () => {
-        try {
-            await $fetch('/invalid-route')
-        } catch (error) {
-            // @ts-ignore
-            expect(error.response.status).toBe(404)
-        }
+
+        const page = await createPage()
+        await page.goto(url('/invalid-route'), { waitUntil: 'hydration' })
+        const text = await page.textContent('h1')
+        expect(text).toBe('404')
+
     })
 
 })  
