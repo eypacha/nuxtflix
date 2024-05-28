@@ -3,7 +3,7 @@
     <canvas ref="canvas"/>
     <div class="d-flex flex-column justify-center align-center text-white">
       <h1 class="text-h1 font-weight-black mb-2">{{ props.error.statusCode }}</h1>
-      <h2 class="text-h5 mb-10">{{ props.error.message }}</h2>
+      <h2 class="text-h5 mb-10">{{ props.error.message || $t('error.default_message') }}</h2>
       <v-btn color="primary" @click="goToHome">{{ $t('error.goto_gome')}}</v-btn>
     </div>
   </div>
@@ -18,7 +18,7 @@ const props = defineProps({
     required: true,
     default: () => ({
       statusCode: 500,
-      message: 'An unknown error occurred'
+      message: undefined
     })
   }
 })

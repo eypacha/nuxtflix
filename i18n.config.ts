@@ -28,7 +28,8 @@ export default defineI18nConfig(() => ({
         go_back: "Go back to browse"
       },
       error: {
-        goto_gome: "Go to home",
+        default_message: "An unknown error occurred",
+        goto_gome: "Go to home"
       },
     },
     es: {
@@ -57,6 +58,7 @@ export default defineI18nConfig(() => ({
         go_back: "Volver a explorar"
       },
       error: {
+        default_message: "Ha ocurrido un error desconocido",
         goto_gome: "Ir al inicio",
       },
     },
